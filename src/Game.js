@@ -26,6 +26,7 @@ class Board extends React.Component {
     super (props);
     this.state = {
       sequares : Array(9).fill(null),
+      xNext : true 
     }
   };
 
@@ -33,8 +34,13 @@ class Board extends React.Component {
   handelClick (i) {
 
     const sequares = this.state.sequares.slice();
-    sequares[i] = "X"; 
-    this.setState({sequares :sequares});
+    sequares[i] = this.state.xNext ? 'X' : 'O'; 
+    this.setState({
+
+      sequares :sequares , 
+      xNext : !this.state.xNext 
+
+    });
   };
 
   renderSquare(i) {
